@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 
@@ -90,7 +91,7 @@ namespace TemaDateTime
             }
 
             Console.WriteLine("30 days before are :");
-            for (int i = 0; i > 30; i--)
+            for (int i = 30; i >= 0; i--)
             {
                 Console.WriteLine($"{now.ToString("dd/MM/yyyy")}");
                 now = now.AddDays(-1);
@@ -125,8 +126,28 @@ namespace TemaDateTime
 
             TimeSpan getDays = start1 - end1;
             Console.WriteLine("Number of days between two dates: " + getDays.Days);
-          
+            Sunday();
+            
+     
+
+            }
+        ///Write a program to select all the Sundays of a specified year and display their dates
+        public static void Sunday()
+        {
+            Console.WriteLine("Your date: MM/dd/yyyy");
+            DateTime myDate = DateTime.Parse(Console.ReadLine());
+            int year = myDate.Year;
+            DateTime firstDay = new DateTime(year, 1, 1);
+            while (year == firstDay.Year)
+            {
+                if (firstDay.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    Console.WriteLine($"Sunday : {firstDay.ToShortDateString()}");
+
+                }
+                firstDay = firstDay.AddDays(1);
+            }
+        }
 
         }
     }
-}
